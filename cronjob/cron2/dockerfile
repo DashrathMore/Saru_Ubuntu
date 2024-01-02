@@ -1,0 +1,16 @@
+FROM python:3.8
+RUN apt-get update && apt-get -y install cron
+WORKDIR /usr/src/app
+
+COPY call_api.py .
+COPY env.yml .
+COPY requirments.txt .
+COPY main.py .
+
+RUN pip install --no-cache-dir -r requirments.txt > /var/logpip-install.log 2>&1
+
+COPY mycronjob /etc/cron.d/mycronjob
+
+RUN chmod 0644 /etc/cron.d/mycronjob
+
+CMD ["cron", "-f"]

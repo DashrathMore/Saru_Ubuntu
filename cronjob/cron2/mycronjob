@@ -1,0 +1,8 @@
+SHELL = /bin/bash
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/2 * * * * root python3 /usr/src/app/main.py >> /var/log/main.log 2>&1
+# * minutes(59)
+# * hours (23)
+# * day(date)
+# * month
+# * day(week)
